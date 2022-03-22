@@ -40,6 +40,15 @@ const EmployeeDashboard = () => {
         </div>
         <div className="row">
           <div className="col-lg-8 col-md-8">
+          <h1 className="dash-sec-title">Activities</h1>
+          <label> Task</label>
+          <input type="text" name="" id="" />
+          <label> Task body</label>
+          <input type="text" name="" id="" />
+
+
+          </div>
+          <div className="col-lg-8 col-md-8">
             <section className="dash-section">
               <h1 className="dash-sec-title">Today's News</h1>
               <div className="dash-sec-content">
