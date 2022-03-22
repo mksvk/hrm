@@ -8,25 +8,34 @@ import '../antdstyle.css';
 import { fetchPayment } from '../../lib/api';
 
 const GeneralLedger = () => {
-  //   useEffect(() => {
-  //     (async () => {
-  //       const res = await fetchPayment();
+    // useEffect(() => {
+    //   (async () => {
+    //     const res = await fetchPayment();
 
-  //       setData(res);
-  //     })();
-  //   }, []);
+    //     setData(res);
+    //   })();
+    // }, []);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      lead: 'Rahul Tiwari',
+      account: 'Accounts Payable',
+      amount_credit: '0.00',
+      amount_debit: '0.00',
+      balance: '0.00',
+    },
+    {
+      id: 2,
+      lead: 'Virat Sharma',
+      account: 'Accounts Receivable',
+      amount_credit: '0.00',
+      amount_debit: '0.00',
+      balance: '0.00',
+    }
+  ]);
 
   const columns = [
-    {
-      title: 'Invoice ID',
-      dataIndex: 'invoicenumber',
-      render: (text, record) => (
-        <Link to="/app/sales/invoices-view">#{text}</Link>
-      ),
-      sorter: (a, b) => a.invoicenumber.length - b.invoicenumber.length,
-    },
     {
       title: 'Customer Name',
       dataIndex: 'lead',
@@ -34,27 +43,27 @@ const GeneralLedger = () => {
     },
 
     {
-      title: 'Payment Type',
-      dataIndex: 'paymentMode',
+      title: 'Account',
+      dataIndex: 'account',
       sorter: (a, b) => a.paymenttype.length - b.paymenttype.length,
     },
     {
-      title: 'Paid Date',
-      dataIndex: 'PaymentDate',
-      sorter: (a, b) => a.duedate.length - b.duedate.length,
-    },
-    {
       title: ' Amount Credited',
-      dataIndex: 'amount',
+      dataIndex: 'amount_credit',
       render: (text, record) => <span>₹ {text}</span>,
       sorter: (a, b) => a.amount.length - b.amount.length,
     },
     {
       title: ' Amount Debited',
-      dataIndex: 'amount',
+      dataIndex: 'amount_debit',
       render: (text, record) => <span>₹ {text}</span>,
       sorter: (a, b) => a.amount.length - b.amount.length,
     },
+    {
+        title: 'Balance',
+        dataIndex: 'balance',
+        sorter: (a, b) => a.balance.length - b.balance.length,
+    }
   ];
   return (
     <div className="page-wrapper">
@@ -108,12 +117,7 @@ const GeneralLedger = () => {
               <div className="modal-body">
                 <form>
                   <div className="row">
-                    <div className="col-md-6">
-                      <div className="form-group">
-                        <label>Invoice Id</label>
-                        <input className="form-control" type="text" />
-                      </div>
-                    </div>
+                    
                     <div className="col-md-6">
                       <div className="form-group">
                         <label>Customer Name</label>
@@ -124,16 +128,16 @@ const GeneralLedger = () => {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label>Payment Type</label>
+                        <label>Account</label>
                         <input className="form-control" type="text" />
                       </div>
                     </div>
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label>Paid Date</label>
+                        <label>Balance</label>
                         <input
-                          className="form-control datertimepicker"
-                          type="date"
+                          className="form-control"
+                          type="text"
                         />
                       </div>
                     </div>
